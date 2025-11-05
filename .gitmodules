@@ -1,0 +1,3 @@
+[submodule "src/ForzaETH_Race_Stack"]
+	path = src/ForzaETH_Race_Stack
+	url = https://github.com/Ingenuity-Labs-Racing/ForzaETH_Race_Stack.git
