@@ -1,0 +1,25 @@
+services:
+  ros2-dc-srv-noetic:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      args:
+        ROS_DISTRO: noetic
+        USERNAME: user1000
+        USER_UID: 1000
+        USER_GID: 1000 
+    container_name: ros2-dc-cont-noetic
+    volumes:
+      - ../src:/home/user1000/catkin_ws/src:rw
+      - ../../shared:/home/user1000/shared:rw
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment:
+      - DISPLAY=${DISPLAY}
+      - ROS_DISTRO=noetic
+      - USERNAME=user1000
+    network_mode: host
+    stdin_open: true
+    tty: true
+    privileged: true
+    devices:
+      - /dev/dri:/dev/dri

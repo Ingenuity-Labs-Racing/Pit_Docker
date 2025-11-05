@@ -1,0 +1,35 @@
+{
+  "name": "ROS Noetic Development",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "ros2-dc-srv-noetic",
+  "workspaceFolder": "/home/user1000/catkin_ws",
+  "shutdownAction": "stopCompose",
+  // The src volume is mounted at runtime, therefor rosdep, build, and source commands
+  // must be performed as a postCreateCommand, after the container has started
+  "postCreateCommand": "bash -c 'source /opt/ros/noetic/setup.bash && rosdep update && rosdep install --from-paths src --ignore-src -r -y && catkin_make && source devel/setup.bash'",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python",
+        "ms-iotdev.vscode-ros",
+        "twxs.cmake"
+      ],
+      "settings": {
+        "workbench.colorTheme": "Default Dark+",
+        "workbench.colorCustomizations": {
+          "titleBar.activeBackground": "#353fff",
+          "titleBar.activeForeground": "#ffffff",
+          "statusBar.background": "#353fff"
+        },
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "args": ["--login"]
+          }
+        }
+      }
+    }
+  }
+}
