@@ -6,7 +6,8 @@
   "shutdownAction": "stopCompose",
   // The src volume is mounted at runtime, therefor rosdep, build, and source commands
   // must be performed as a postCreateCommand, after the container has started
-  "postCreateCommand": "bash -c 'source /opt/ros/noetic/setup.bash && rosdep update && rosdep install --from-paths src --ignore-src -r -y && catkin_make && source devel/setup.bash'",
+  "postCreateCommand": "bash -c 'source /opt/ros/noetic/setup.bash && rosdep update && rosdep install --from-paths src --ignore-src -r -y && catkin_make_isolated && source devel_isolated/setup.bash'"
+  //"postCreateCommand": "bash -c 'source /opt/ros/noetic/setup.bash && rosdep update && rosdep install --from-paths src --ignore-src -r -y && catkin_make && source devel/setup.bash'",
   "customizations": {
     "vscode": {
       "extensions": [

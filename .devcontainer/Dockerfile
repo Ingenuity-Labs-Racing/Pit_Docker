@@ -25,6 +25,19 @@ RUN apt-get update && apt-get install -y \
     sudo \
     bash-completion 
 
+# Install Abseil from source (for Cartographer)
+RUN apt-get update && apt-get install -y cmake g++ git && \
+    cd /tmp && \
+    git clone https://github.com/abseil/abseil-cpp.git && \
+    cd abseil-cpp && \
+    git checkout 20210324.2 && \
+    mkdir build && cd build && \
+    cmake .. -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_BUILD_TYPE=Release && \
+    make -j$(nproc) && \
+    make install && \
+    rm -rf /tmp/abseil-cpp
+
+
 RUN apt-get -y dist-upgrade
 # RUN pip3 install transforms3d
 
