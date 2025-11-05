@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     ros-noetic-tf2-geometry-msgs \
     ros-noetic-xacro \
     ros-noetic-robot-state-publisher \
+    ros-noetic-rospy-message-converter \
     # Install other dependencies as well
     python3-colcon-common-extensions \
     python3-rosdep \    
