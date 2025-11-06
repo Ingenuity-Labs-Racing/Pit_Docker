@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
     python3-colcon-common-extensions \
     python3-rosdep \    
     python3-pip \
+    pybind11-dev \
     libeigen3-dev \
     tmux \
     nano \
@@ -41,6 +42,8 @@ RUN apt-get update && apt-get install -y cmake g++ git && \
 
 RUN apt-get -y dist-upgrade
 # RUN pip3 install transforms3d
+
+RUN python3 -m pip install "pydantic>=2.3,<3"
 
 # Install Starship for prettiness
 RUN curl -fsSL https://starship.rs/install.sh | sh -s -- -y
